@@ -1,3 +1,14 @@
-<div>
+<div ng-controller='HomeController'>
   <h1>CHECK THIS OUT, I AM THE HOMEVIEW!!!!</h1>
+  <div>
+    <input ng-model='width' placeholder='width'/>
+    <input ng-model='height' placeholder='height'/>
+  </div>
+  <table>
+    <tbody>
+      <tr ng-repeat='(key, value) in plan track by $id(key)'>
+        <td><input placeholder='{{value}}' style='width:200px'/></td>
+      </tr>
+    </tbody>
+  </table>
 </div>

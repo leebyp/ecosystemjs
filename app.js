@@ -1,7 +1,21 @@
 var app = angular.module('app', ['ngRoute']);
 
 app.controller('HomeController', function($scope, $http){
-  console.log('looking for the home controller');
+  $scope.plan = 
+    ["############################",
+     "#.....................######",
+     "#....***................**##",
+     "#...*##**.........**..c..*##",
+     "#....***.....c....##**....*#",
+     "#.......c.........##***...*#",
+     "#.................##**....*#",
+     "#...c.......#*............*#",
+     "#*..........#**.......c...*#",
+     "#***....##**....c........**#",
+     "#*****.....###***.......*###",
+     "############################"];
+  
+
 })
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
