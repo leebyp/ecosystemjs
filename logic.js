@@ -208,21 +208,21 @@ Point.prototype.toString = function() {
   return "(" + this.x + "," + this.y + ")";
 };
 //==============================================
-Terrarium.prototype.start = function() {
-  if (!this.running)
-    this.running = setInterval(bind(function(){
-      this.step();
-      console.log(this.toString())
-    }
-      , this), 500);
-};
+// Terrarium.prototype.start = function() {
+//   if (!this.running)
+//     this.running = setInterval(bind(function(){
+//       this.step();
+//       console.log(this.toString())
+//     }
+//       , this), 500);
+// };
 
-Terrarium.prototype.stop = function() {
-  if (this.running) {
-    clearInterval(this.running);
-    this.running = null;
-  }
-};
+// Terrarium.prototype.stop = function() {
+//   if (this.running) {
+//     clearInterval(this.running);
+//     this.running = null;
+//   }
+// };
 //==============================================
 // var terrarium = new Terrarium(thePlan);
 // // terrarium.onStep = partial(inPlacePrinter(), terrarium);
@@ -428,8 +428,8 @@ var lichenPlan =
    "############################"];
 
 var terrarium = new LifeLikeTerrarium(lichenPlan);
-terrarium.start();
-terrarium.stop();
+// terrarium.start();
+// terrarium.stop();
 //==============================================
 
 //==============================================

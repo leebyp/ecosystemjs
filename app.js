@@ -25,10 +25,27 @@ app.controller('HomeController', function($scope, $http){
 
   // $scope.invalid = false;
   $scope.submit = function(){
-    $scope.terranium = new LifeLikeTerrarium(lichenPlan);
+    Terrarium.prototype.start = function() {
+      if (!this.running)
+        this.running = setInterval(bind(function(){
+          this.step();
+          console.log(this.toString())
+          console.log('hello world!')
+        }
+          , this), 500);
+    };
+
+    $scope.terranium = new LifeLikeTerrarium($scope.plan);
     $scope.terranium.start();
   }
+
   $scope.stopSim = function(){
+    Terrarium.prototype.stop = function() {
+      if (this.running) {
+        clearInterval(this.running);
+        this.running = null;
+      }
+    };
     $scope.terranium.stop();
   }
 })
