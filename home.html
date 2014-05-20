@@ -3,7 +3,7 @@
     <input ng-model='width' placeholder='width'/>
     <input ng-model='height' placeholder='height'/>
   </div> -->
-  <div style='text-align:center;margin:20px 20px'>  
+  <div id='game'>
     <div ng-repeat='(key, value) in CellService.arr track by $id(key)'>
       <div ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block'>
       {{value2}}
@@ -12,11 +12,11 @@
     <button ng-click='startSim()'>Start simulation</button>
     <button ng-click='stopSim()'>Stop simulation</button>
     <!-- <div ng-show='invalid'>Please only enter valid symbols!</div> -->
-    <div style='text-align:center'>
+    <div id='legend'>
         Legend: c === creature, * === plant, # === wall
     </div>
   </div>
-  <div style='text-align:center; margin:20px 20px'>
+  <div id='plan'>
     <div ng-repeat='(key, value) in CellService.arr track by $id(key)'>
         <input ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block;text-align:center' placeholder='{{value2}}' ng-change='changeMap($parent.$index, $index, text)' ng-model='text'/>
     </div>

@@ -1,3 +1,20 @@
 div {
-  
+  background-color: #4FE27B;
+  color: white;
+}
+
+#game {
+  text-align:center;
+  margin:20px 20px;
+  padding:30px 20px 0px 0px;
+}
+
+#plan {
+  text-align:center;
+  padding:20px 30px 0px 0px;
+}
+
+#legend {
+  color: #363D38;
+  text-align: center;
 }
