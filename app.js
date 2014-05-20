@@ -71,6 +71,16 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
   $scope.changeMap = function(x,y,newValue){
     this.stopSim();
     this.CellService.arr[x][y] = newValue;
+    var arr = [];
+    for (var i=0; i<CellService.arr.length; i++){
+      var string = ''
+      for (var j=0; j<CellService.arr[0].length; j++){
+        string += CellService.arr[i][j];
+      }
+      arr.push(string);
+    }
+    this.CellService.plan = arr;
+    this.CellService.terranium = new LifeLikeTerrarium(this.CellService.plan);
   }
 
   // $scope.loadMap = function(){
