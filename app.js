@@ -55,7 +55,6 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
         }
           , this), 1000);
     };
-    console.log('hello');
     CellService.terranium.start()
   }
 
@@ -67,6 +66,11 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
       }
     };
     CellService.terranium.stop();
+  }
+
+  $scope.changeMap = function(x,y,newValue){
+    this.stopSim();
+    this.CellService.arr[x][y] = newValue;
   }
 
   // $scope.loadMap = function(){
