@@ -123,7 +123,7 @@ function Terrarium(plan) {
 }
 
 function elementFromCharacter(character) {
-  if (character == " ")
+  if (character == ".")
     return undefined;
   else if (character == "#")
     return wall;
@@ -136,7 +136,7 @@ StupidBug.prototype.character = "o";
 
 function characterFromElement(element) {
   if (element == undefined)
-    return " ";
+    return ".";
   else
     return element.character;
 }
@@ -230,7 +230,7 @@ Terrarium.prototype.stop = function() {
 // terrarium.stop();
 //==============================================
 // function elementFromCharacter(character) {
-//   if (character == " ")
+//   if (character == ".")
 //     return undefined;
 //   else if (character == "#")
 //     return wall;
@@ -244,7 +244,7 @@ creatureTypes.register = function(constructor) {
 };
 
 function elementFromCharacter(character) {
-  if (character == " ")
+  if (character == ".")
     return undefined;
   else if (character == "#")
     return wall;
@@ -258,7 +258,7 @@ function elementFromCharacter(character) {
 //   this.direction = "ne";
 // }
 // BouncingBug.prototype.act = function(surroundings) {
-//   if (surroundings[this.direction] != " ")
+//   if (surroundings[this.direction] != ".")
 //     this.direction = (this.direction == "ne" ? "sw" : "ne");
 //   return {type: "move", direction: this.direction};
 // };
@@ -372,7 +372,7 @@ function Lichen() {
   this.energy = 5;
 }
 Lichen.prototype.act = function(surroundings) {
-  var emptySpace = findDirections(surroundings, " ");
+  var emptySpace = findDirections(surroundings, ".");
   if (this.energy >= 13 && emptySpace.length > 0)
     return {type: "reproduce", direction: randomElement(emptySpace)};
   else if (this.energy < 20)
@@ -397,7 +397,7 @@ function LichenEater() {
   this.energy = 10;
 }
 LichenEater.prototype.act = function(surroundings) {
-  var emptySpace = findDirections(surroundings, " ");
+  var emptySpace = findDirections(surroundings, ".");
   var lichen = findDirections(surroundings, "*");
 
   if (this.energy >= 30 && emptySpace.length > 0)
@@ -415,16 +415,16 @@ creatureTypes.register(LichenEater);
 //==============================================
 var lichenPlan =
   ["############################",
-   "#                     ######",
-   "#    ***                **##",
-   "#   *##**         **  c  *##",
-   "#    ***     c    ##**    *#",
-   "#       c         ##***   *#",
-   "#                 ##**    *#",
-   "#   c       #*            *#",
-   "#*          #**       c   *#",
-   "#***        ##**    c    **#",
-   "#*****     ###***       *###",
+   "#.....................######",
+   "#....***................**##",
+   "#...*##**.........**..c..*##",
+   "#....***.....c....##**....*#",
+   "#.......c.........##***...*#",
+   "#.................##**....*#",
+   "#...c.......#*............*#",
+   "#*..........#**.......c...*#",
+   "#***....##**....c........**#",
+   "#*****.....###***.......*###",
    "############################"];
 
 var terrarium = new LifeLikeTerrarium(lichenPlan);
