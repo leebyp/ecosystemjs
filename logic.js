@@ -63,7 +63,7 @@ Point.prototype.isEqualTo = function(other) {
   return this.x == other.x && this.y == other.y;
 };
 
-console.log((new Point(3, 1)).add(new Point(2, 4)));
+// console.log((new Point(3, 1)).add(new Point(2, 4)));
 //==============================================
 function Grid(width, height) {
   this.width = width;
