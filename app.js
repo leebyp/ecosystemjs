@@ -14,19 +14,6 @@ app.controller('HomeController', function($scope, $http){
      "#***....##**....c........**#",
      "#*****.....###***.......*###",
      "############################"];
-  // $scope.invalid = false;
-  // $scope.submit = function(){
-  //   for (var i=0; i<$scope.plan.length; i++){
-  //     if ($scope.plan[i].length !== $scope.width){
-  //       $scope.invalid = true;
-  //       return;
-  //     }
-  //     if (!$scope.plan[i].match(/^[#.c]/)){
-  //       $scope.invalid = true;
-  //       return
-  //     }
-  //   }
-  // }
   $scope.arr = []
   for (var i=0; i<$scope.plan.length; i++){
     var row = [];
@@ -34,6 +21,15 @@ app.controller('HomeController', function($scope, $http){
       row.push($scope.plan[i][j]);
     }
     $scope.arr.push(row);
+  }
+
+  // $scope.invalid = false;
+  $scope.submit = function(){
+    $scope.terranium = new LifeLikeTerrarium(lichenPlan);
+    $scope.terranium.start();
+  }
+  $scope.stopSim = function(){
+    $scope.terranium.stop();
   }
 })
 

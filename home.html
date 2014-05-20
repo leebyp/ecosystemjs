@@ -3,18 +3,19 @@
     <input ng-model='width' placeholder='width'/>
     <input ng-model='height' placeholder='height'/>
   </div> -->
-  <div style='text-align:center; margin:20px 20px'>
-    <div ng-repeat='(key, value) in arr track by $id(key)'>
-        <input ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block' placeholder='{{value2}}'/>
-    </div>
-    <!-- <button ng-click='submit'>Submit plan</button> -->
-  </div>
-  <!-- <div ng-show='invalid'>Please show valid url!</div> -->
   <div style='text-align:center;margin:20px 20px'>  
     <div ng-repeat='(key, value) in arr track by $id(key)'>
       <div ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block'>
       {{value2}}
       </div>
+    </div>
+    <button ng-click='submit()'>Submit plan</button>
+    <button ng-click='stopSim()'>Stop simulation</button>
+    <!-- <div ng-show='invalid'>Please only enter valid symbols!</div> -->
+  </div>
+  <div style='text-align:center; margin:20px 20px'>
+    <div ng-repeat='(key, value) in arr track by $id(key)'>
+        <input ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block' value='{{value2}}'/>
     </div>
   </div>
 </div>
