@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ngRoute']);
 
-app.controller('HomeController', function($scope, $http, $interval){
-  $scope.plan = 
+app.service('CellService', function(){
+  this.plan = 
     ["############################",
      "#.....................######",
      "#....***................**##",
@@ -14,44 +14,49 @@ app.controller('HomeController', function($scope, $http, $interval){
      "#***....##**....c........**#",
      "#*****.....###***.......*###",
      "############################"];
-  $scope.terranium = new LifeLikeTerrarium($scope.plan);
-  $scope.arr = []
-  for (var i=0; i<$scope.plan.length; i++){
+  this.terranium = new LifeLikeTerrarium(this.plan);
+  this.arr = []
+  for (var i=0; i<this.plan.length; i++){
     var row = [];
-    for (var j=0; j<$scope.plan[i].length; j++){
-      row.push($scope.plan[i][j]);
+    for (var j=0; j<this.plan[i].length; j++){
+      row.push(this.plan[i][j]);
     }
-    $scope.arr.push(row);
+    this.arr.push(row);
   }
+});
+
+app.controller('HomeController', function($scope, $http, $interval, CellService){
+  $scope.CellService = CellService
 
   // $scope.invalid = false;
   $scope.startSim = function(){
     Terrarium.prototype.start = function() {
+      console.log('start function being run')
       if (!this.running)
         this.running = $interval(bind(function(){
           this.step();
           var gridString = this.toString()
           var grid = gridString.split('\n');
-          $scope.plan = grid;
+          CellService.plan = grid;
           grid.pop();
           // console.log('hello world!')
           // console.log(grid);
           // console.log($scope.plan);
-          $scope.arr = []
+          CellService.arr = []
           for (var i=0; i<grid.length; i++){
             var row = [];
             for (var j=0; j<grid[i].length; j++){
               row.push(grid[i][j]);
             }
-            $scope.arr.push(row);
+            CellService.arr.push(row);
           }
           // console.log(grid);
           // console.log($scope.arr);
         }
           , this), 1000);
     };
-
-    $scope.terranium.start()
+    console.log('hello');
+    CellService.terranium.start()
   }
 
   $scope.stopSim = function(){
@@ -61,8 +66,12 @@ app.controller('HomeController', function($scope, $http, $interval){
         this.running = null;
       }
     };
-    $scope.terranium.stop();
+    CellService.terranium.stop();
   }
+
+  // $scope.loadMap = function(){
+  //   console.log($scope.terranium.toString())
+  // }
 
 })
 
@@ -71,6 +80,6 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
    .when('/', {
     templateUrl: 'home.html',
     controller: 'HomeController'
-  })
+  });
   $locationProvider.html5Mode(true);
 }]);
