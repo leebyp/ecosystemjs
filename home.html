@@ -12,6 +12,9 @@
     <button ng-click='startSim()'>Start simulation</button>
     <button ng-click='stopSim()'>Stop simulation</button>
     <!-- <div ng-show='invalid'>Please only enter valid symbols!</div> -->
+    <div style='text-align:center'>
+        Legend: c === creature, * === plant, # === wall
+    </div>
   </div>
   <div style='text-align:center; margin:20px 20px'>
     <div ng-repeat='(key, value) in CellService.arr track by $id(key)'>
