@@ -14,7 +14,6 @@
     <!-- <div ng-show='invalid'>Please only enter valid symbols!</div> -->
   </div>
   <div style='text-align:center; margin:20px 20px'>
-    <!-- <button ng-click='loadMap()'>Load map</button> -->
     <div ng-repeat='(key, value) in CellService.arr track by $id(key)'>
         <input ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block;text-align:center' placeholder='{{value2}}' ng-change='changeMap($parent.$index, $index, text)' ng-model='text'/>
     </div>

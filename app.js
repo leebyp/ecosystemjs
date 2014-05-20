@@ -28,7 +28,6 @@ app.service('CellService', function(){
 app.controller('HomeController', function($scope, $http, $interval, CellService){
   $scope.CellService = CellService
 
-  // $scope.invalid = false;
   $scope.startSim = function(){
     Terrarium.prototype.start = function() {
       console.log('start function being run')
@@ -39,9 +38,6 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
           var grid = gridString.split('\n');
           CellService.plan = grid;
           grid.pop();
-          // console.log('hello world!')
-          // console.log(grid);
-          // console.log($scope.plan);
           CellService.arr = []
           for (var i=0; i<grid.length; i++){
             var row = [];
@@ -50,8 +46,6 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
             }
             CellService.arr.push(row);
           }
-          // console.log(grid);
-          // console.log($scope.arr);
         }
           , this), 1000);
     };
@@ -82,10 +76,6 @@ app.controller('HomeController', function($scope, $http, $interval, CellService)
     this.CellService.plan = arr;
     this.CellService.terranium = new LifeLikeTerrarium(this.CellService.plan);
   }
-
-  // $scope.loadMap = function(){
-  //   console.log($scope.terranium.toString())
-  // }
 
 })
 

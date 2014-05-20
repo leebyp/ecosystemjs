@@ -199,46 +199,10 @@ Terrarium.prototype.step = function() {
     this.onStep();
 };
 //==============================================
-// var terrarium = new Terrarium(thePlan);
-// console.log(terrarium.toString());
-// terrarium.step();
-// console.log(terrarium.toString());
-//==============================================
 Point.prototype.toString = function() {
   return "(" + this.x + "," + this.y + ")";
 };
 //==============================================
-// Terrarium.prototype.start = function() {
-//   if (!this.running)
-//     this.running = setInterval(bind(function(){
-//       this.step();
-//       console.log(this.toString())
-//     }
-//       , this), 500);
-// };
-
-// Terrarium.prototype.stop = function() {
-//   if (this.running) {
-//     clearInterval(this.running);
-//     this.running = null;
-//   }
-// };
-//==============================================
-// var terrarium = new Terrarium(thePlan);
-// // terrarium.onStep = partial(inPlacePrinter(), terrarium);
-// terrarium.start();
-// terrarium.stop();
-//==============================================
-// function elementFromCharacter(character) {
-//   if (character == ".")
-//     return undefined;
-//   else if (character == "#")
-//     return wall;
-//   else if (character == "o")
-//     return new StupidBug();
-// }
-//==============================================
-
 creatureTypes.register = function(constructor) {
   this.store(constructor.prototype.character, constructor);
 };
@@ -254,18 +218,6 @@ function elementFromCharacter(character) {
     throw new Error("Unknown character: " + character);
 }
 //==============================================
-// function BouncingBug() {
-//   this.direction = "ne";
-// }
-// BouncingBug.prototype.act = function(surroundings) {
-//   if (surroundings[this.direction] != ".")
-//     this.direction = (this.direction == "ne" ? "sw" : "ne");
-//   return {type: "move", direction: this.direction};
-// };
-// BouncingBug.prototype.character = "%";
-
-// creatureTypes.register(BouncingBug);
-//==============================================
 Dictionary.prototype.names = function() {
   var names = [];
   this.each(function(name, value) {names.push(name);});
@@ -276,32 +228,6 @@ function randomElement(array) {
     throw new Error("The array is empty.");
   return array[Math.floor(Math.random() * array.length)];
 }
-//==============================================
-// function DrunkBug() {};
-// DrunkBug.prototype.act = function(surroundings) {
-//   return {type: "move",
-//           direction: randomElement(directions.names())};
-// };
-// DrunkBug.prototype.character = "~";
-
-// creatureTypes.register(DrunkBug);
-// ==============================================
-// var newPlan =
-//   ["############################",
-//    "#                      #####",
-//    "#    ##                 ####",
-//    "#   ####     ~ ~          ##",
-//    "#    ##       ~            #",
-//    "#                          #",
-//    "#                ###       #",
-//    "#               #####      #",
-//    "#                ###       #",
-//    "# %        ###        %    #",
-//    "#        #######           #",
-//    "############################"];
-
-// var terrarium = new Terrarium(newPlan);
-// terrarium.start();
 //==============================================
 function clone(object) {
   function OneShotConstructor(){}
@@ -330,7 +256,6 @@ LifeLikeTerrarium.prototype.processCreature = function(creature) {
       valueAtTarget = this.grid.valueAt(target);
     }
   }
-
   if (action.type == "move") {
     if (target && !valueAtTarget) {
       this.grid.moveValue(creature.point, target);
@@ -426,11 +351,4 @@ var lichenPlan =
    "#***....##**....c........**#",
    "#*****.....###***.......*###",
    "############################"];
-
-var terrarium = new LifeLikeTerrarium(lichenPlan);
-// terrarium.start();
-// terrarium.stop();
-//==============================================
-
-//==============================================
 //==============================================
