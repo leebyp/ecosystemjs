@@ -17,8 +17,17 @@
     </div>
   </div>
   <div id='plan'>
+    Alter the map to your heart's content here:
     <div ng-repeat='(key, value) in CellService.arr track by $id(key)'>
         <input ng-repeat='(key2, value2) in value track by $id(key2)' style='width:20px;height:20px;display:inline-block;text-align:center' placeholder='{{value2}}' ng-change='changeMap($parent.$index, $index, text)' ng-model='text'/>
     </div>
+  </div>
+  <div id='gameDescription'>
+    Here we have a simulation of a simple ecosystem written in Javascript using AngularJS.
+    The logic behind the simulation is taken from 'Eloquent JavaScript' by Marijn Haverbeke.
+    Each organisms have their own specific characteristics, including energy count and particular actions (eg. eat, reproduce, move). Additional creatures can be registered into the app with the simple format presented in the logic.js file.
+  </div>
+  <div id='credits'>
+    made by Benjamin Lee
   </div>
 </div>

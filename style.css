@@ -18,3 +18,17 @@ div {
   color: #363D38;
   text-align: center;
 }
+
+#gameDescription {
+  color: #996633;
+  text-align:center;
+  margin:20px 20px;
+  padding:30px 20px 0px 0px;
+  font-size: small;
+}
+
+#credits {
+  color: #568DDB;
+  font-size: small;
+  text-align: right;
+}
